@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily Todo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app">
+
+    <header class="header">
+      <div class="header-inner">
+        <h1 class="logo">✅ Daily Todo</h1>
+        <p class="date-label" id="dateLabel"></p>
+      </div>
+    </header>
+
+    <section class="progress-section">
+      <div class="progress-card overall">
+        <div class="progress-card-top">
+          <span class="progress-title">전체 진행률</span>
+          <span class="progress-value" id="overallValue">0%</span>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar" id="overallBar"></div>
+        </div>
+        <p class="progress-sub" id="overallSub">0 / 0개 완료</p>
+      </div>
+
+      <div class="progress-categories">
+        <div class="progress-card">
+          <div class="progress-card-top">
+            <span class="cat-dot work"></span>
+            <span class="progress-title">업무</span>
+            <span class="progress-value" id="workValue">0%</span>
+          </div>
+          <div class="progress-bar-wrap"><div class="progress-bar work" id="workBar"></div></div>
+          <p class="progress-sub" id="workSub">0 / 0개</p>
+        </div>
+
+        <div class="progress-card">
+          <div class="progress-card-top">
+            <span class="cat-dot personal"></span>
+            <span class="progress-title">개인</span>
+            <span class="progress-value" id="personalValue">0%</span>
+          </div>
+          <div class="progress-bar-wrap"><div class="progress-bar personal" id="personalBar"></div></div>
+          <p class="progress-sub" id="personalSub">0 / 0개</p>
+        </div>
+
+        <div class="progress-card">
+          <div class="progress-card-top">
+            <span class="cat-dot study"></span>
+            <span class="progress-title">공부</span>
+            <span class="progress-value" id="studyValue">0%</span>
+          </div>
+          <div class="progress-bar-wrap"><div class="progress-bar study" id="studyBar"></div></div>
+          <p class="progress-sub" id="studySub">0 / 0개</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="add-section">
+      <p class="auto-hint" id="autoHint"></p>
+      <form class="add-form" id="addForm">
+        <select class="cat-select" id="catSelect">
+          <option value="work">💼 업무</option>
+          <option value="personal">🏠 개인</option>
+          <option value="study">📚 공부</option>
+        </select>
+        <input
+          class="todo-input"
+          id="todoInput"
+          type="text"
+          placeholder="새 할 일을 입력하세요..."
+          autocomplete="off"
+          maxlength="200"
+        />
+        <input class="due-date-input" id="dueDateInput" type="date" title="마감일 (선택)" />
+        <button class="btn-add" type="submit">추가</button>
+      </form>
+    </section>
+
+    <section class="filter-section">
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-filter="all">전체</button>
+        <button class="filter-btn" data-filter="work">💼 업무</button>
+        <button class="filter-btn" data-filter="personal">🏠 개인</button>
+        <button class="filter-btn" data-filter="study">📚 공부</button>
+      </div>
+      <button class="btn-clear" id="clearCompleted">완료 삭제</button>
+    </section>
+
+    <section class="list-section">
+      <ul class="todo-list" id="todoList"></ul>
+      <div class="empty-state" id="emptyState">
+        <p>📝</p>
+        <p>할 일이 없습니다.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <h2 class="modal-title">할 일 수정</h2>
+      <select class="cat-select" id="editCatSelect">
+        <option value="work">💼 업무</option>
+        <option value="personal">🏠 개인</option>
+        <option value="study">📚 공부</option>
+      </select>
+      <input class="todo-input" id="editInput" type="text" maxlength="200" />
+      <input class="due-date-input modal-due-date" id="editDueDateInput" type="date" />
+      <div class="modal-actions">
+        <button class="btn-cancel" id="editCancel">취소</button>
+        <button class="btn-save" id="editSave">저장</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
